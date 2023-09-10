@@ -40,7 +40,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 3000,
-    watchContentBase: isDev
+    watchContentBase: isDev,
   },
   plugins: [
     new CleanWebpackPlugin(),
