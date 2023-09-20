@@ -9,6 +9,13 @@ class Dom {
 		return this.$el.dataset
 	}
 
+	getStyles(styles = []) {
+		return styles.reduce((res, s) => {
+			res[s] = this.$el.style[s]
+			return res
+		}, {})
+	}
+
 	html(html) {
 		if (typeof html === 'string') {
 			this.$el.innerHTML = html
@@ -18,11 +25,11 @@ class Dom {
 	}
 
 	text(text) {
-		if (typeof text === 'string') {
+		if (typeof text !== 'undefined') {
 			this.$el.textContent = text
 			return this
 		}
-		if (this.$el.tagName.toLowerCase() === 'input'){
+		if (this.$el.tagName.toLowerCase() === 'input') {
 			return this.$el.value.trim()
 		}
 		return this.$el.textContent.trim()
@@ -64,6 +71,11 @@ class Dom {
 		return this
 	}
 
+	attr(name, value) {
+		this.$el.setAttribute(name, value)
+		return this
+	}
+
 	focus() {
 		this.$el.focus()
 		return this
@@ -84,6 +96,7 @@ class Dom {
 		this.$el.classList.add(className)
 		return this
 	}
+
 	removeClass(className) {
 		this.$el.classList.remove(className)
 		return this
