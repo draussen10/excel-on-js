@@ -9,6 +9,7 @@
 
   & i {
     font-size: 18px;
+    pointer-events: none;
   }
 
   &:active, &.active {
