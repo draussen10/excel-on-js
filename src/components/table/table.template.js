@@ -25,7 +25,7 @@ function toCell(_, indexCol, indexRow, state) {
 	const data = state.dataState[id]
 	const styles = toInlineStyles({
 		...defaultStyles,
-		...data
+		...state.stylesState[id]
 	})
 
 	return `
