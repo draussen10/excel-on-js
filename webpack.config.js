@@ -12,17 +12,17 @@ const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
 
 const jsLoaders = () => {
   const loaders = ['babel-loader']
+
   return loaders
 }
 
 module.exports = {
-  target: 'web',
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: ['@babel/polyfill', './index.js'],
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   resolve: {
     extensions: ['.js'],
@@ -34,7 +34,7 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 3000,
-    watchContentBase: isDev,
+    hot: isDev
   },
   plugins: [
     new CleanWebpackPlugin(),
